@@ -38,3 +38,22 @@ body {
     transform: translate(-50%, -50%);
     color: white;
 }
+
+.blog-card {
+    border: 1px solid #EDC4B3;
+}
+
+.blog-card-header {
+    background-color: #D69F7E;
+    color: #fff;
+}
+
+
+.blog-title {
+    color: #D69F7E;
+}
+
+.blog-btn {
+    background-color: #D69F7E;
+    color: #fff;
+}

@@ -20,6 +20,18 @@ blogs = [
         "content": "",
         "date_posted":"25-01-2022",
         "no_of_comments":1
+    },
+    {
+        "title":"fourth blog post",
+        "content": "",
+        "date_posted":"25-01-2022",
+        "no_of_comments":1
+    },
+    {
+        "title":"fifth blog post",
+        "content": "",
+        "date_posted":"25-01-2022",
+        "no_of_comments":1
     }
 ]
 

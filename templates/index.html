@@ -6,5 +6,23 @@
         <p>by some famous author</p>
         </div>
     </div>
-    <p>am a text</p>
+    <div class="container">
+        <div class="row row-cols-1 row-cols-md-3 g-4 mt-2">
+            {% for blog in blogs%}
+            <div class="col">
+                <div class="card blog-card">
+                    <div class="card-header blog-card-header">
+                        <p >user: clint</p>
+                      </div>
+                    <div class="card-body">
+                      <h5 class="card-title blog-title">{{blog.title}}</h5>
+                      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                      <a href="#" class="btn blog-btn">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor%}
+        </div>
+    </div>
+
 {%endblock%}
