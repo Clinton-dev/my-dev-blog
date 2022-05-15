@@ -12,17 +12,23 @@
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg navigation-bar">
         <div class="container-fluid">
-        <a class="navbar-brand" href="#">Dev-journal</a>
+        <a class="navbar-brand" href="{{url_for('home')}}">Dev-journal</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link active" aria-current="page" href="{{url_for('home')}}">Home</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">New blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('login')}}">login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('register')}}">signup</a>
             </li>
             </ul>
         </div>

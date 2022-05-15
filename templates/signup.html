@@ -1,7 +1,8 @@
 {% extends "layout.html"%}
 {% block content%}
     <div class="container">
-        <div class="form-container mt-3 p-3">
+        <div class="row align-items-center">
+            <div class="form-container  mt-4 p-3">
             <form method="POST" action="">
                 {{ form.hidden_tag() }}
                 <fieldset class="form-group">
@@ -63,12 +64,13 @@
                 <div class="form-group mt-2">
                     {{ form.submit(class="btn form-btn") }}
                 </div>
-            </form>
-        </div>
-        <div class="pt-3 signup-footer">
-            <small class="text-muted">
-                Already Have An Account? <a class="ml-2" href="{{ url_for('login') }}" class="form-link">Sign In</a>
-            </small>
+                </form>
+            </div>
+            <div class="pt-3 signup-footer">
+                <small class="text-muted">
+                    Already Have An Account? <a class="ml-2" href="{{ url_for('login') }}" class="form-link">Sign In</a>
+                </small>
+            </div>
         </div>
     </div>
 {% endblock %}
