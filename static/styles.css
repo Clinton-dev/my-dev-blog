@@ -57,3 +57,25 @@ body {
     background-color: #D69F7E;
     color: #fff;
 }
+
+.form-container {
+  border: 2px solid #EDC4B3;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  width: 60vw;
+  margin: 0 auto;
+}
+
+.form-btn {
+    background-color: #D69F7E;
+    color: #fff;
+}
+
+a.form-link {
+    color: #D69F7E;
+}
+
+.signup-footer {
+  width: 60vw;
+  margin: 0 auto;
+}
