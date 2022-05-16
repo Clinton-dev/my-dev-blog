@@ -8,38 +8,6 @@ from blog.models import User, Post, Comment
 from flask_login import login_required, login_user, current_user, logout_user
 
 
-blogs = [
-    {
-        "title":"First blog post",
-        "content": "",
-        "date_posted":"13-02-2021",
-        "no_of_comments":30
-    },
-    {
-        "title":"second blog post",
-        "content": "",
-        "date_posted":"25-04-2022",
-        "no_of_comments":15
-    },
-    {
-        "title":"third blog post",
-        "content": "",
-        "date_posted":"25-01-2022",
-        "no_of_comments":1
-    },
-    {
-        "title":"fourth blog post",
-        "content": "",
-        "date_posted":"25-01-2022",
-        "no_of_comments":1
-    },
-    {
-        "title":"fifth blog post",
-        "content": "",
-        "date_posted":"25-01-2022",
-        "no_of_comments":1
-    }
-]
 
 @app.route("/")
 @app.route("/home")
@@ -114,7 +82,14 @@ def profile():
     img_file = url_for('static', filename='profile-pic/' + current_user.image_file)
     return render_template('profile.html', title="profile", user_img=img_file, form=form)
 
-@app.route("/create_post")
+@app.route("/post/new", methods=["POST","GET"])
 @login_required
 def create_post():
-    return render_template("create_post.html", title="new blog post")
+    form = PostForm()
+    if form.validate_on_submit():
+        post = Post(title=form.title.data, content=form.content.data,user_id=current_user.id)
+        db.session.add(post)
+        db.session.commit()
+        flash('Blog post created successfully!', 'success')
+        return redirect(url_for('home'))
+    return render_template("create_post.html", title="new blog post", form=form)
