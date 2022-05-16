@@ -2,8 +2,8 @@
 {% block content%}
     <div class="hero-image container-fluid">
         <div class="hero-text">
-        <h1>"Some random quote from the api"</h1>
-        <p>by some famous author</p>
+        <h1>"{{rand_quote.quote}}"</h1>
+        <p>by {{rand_quote.author}}</p>
         </div>
     </div>
     <div class="container">
@@ -12,12 +12,15 @@
             <div class="col">
                 <div class="card blog-card">
                     <div class="card-header blog-card-header">
-                        <p >user: clint</p>
-                      </div>
+                        <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile-pic/' + blog.author.image_file) }}">
+
+                        <a href="#" class="author-link">{{blog.author.username}}</a><br>
+                        <small class="text-muted">Date posted: {{blog.date_posted.strftime('%Y-%m-%d')}}</small><br>
+                    </div>
                     <div class="card-body">
-                      <h5 class="card-title blog-title">{{blog.title}}</h5>
-                      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                      <a href="#" class="btn blog-btn">Go somewhere</a>
+                      <h5 class="card-title "><a href="{{url_for('post',post_id=blog.id)}}" class="blog-title">{{blog.title}}</a></h5>
+                      <p class="card-text">{{blog.content}}</p>
+                      <a href="{{url_for('post',post_id=blog.id)}}" class="btn blog-btn">Read blog</a>
                     </div>
                 </div>
             </div>
