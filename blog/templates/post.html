@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row mt-4">
         <div class="card mb-3 post-card">
-            <img src="..." class="card-img-top" alt="blog post image">
+            <img src="{{img_file}}" class="card-img-top blog-img" alt="blog post image">
             <div class="card-body">
                 {% if post.author == current_user%}
                     <div class="blog-btn-action">
@@ -13,7 +13,6 @@
                 {% endif %}
               <h5 class="card-title blog-title text-center mt-3">{{post.title}}</h5>
               <p class="card-text">{{post.content}}</p>
-              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
             </div>
           </div>
     </div>

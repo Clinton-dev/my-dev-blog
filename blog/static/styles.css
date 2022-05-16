@@ -27,6 +27,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
+    z-index: -1;
 }
 
   /* Place text in the middle of the image */
@@ -122,4 +123,14 @@ a.author-link {
 .blog-btn-action {
     width: 15vw;
     margin: 0 auto;
+}
+
+.blog-img {
+    height: 80vh;
+}
+
+footer {
+    background-color: #774936;
+    color: #fff;
+    height: 5vh;
 }

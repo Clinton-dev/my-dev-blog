@@ -108,7 +108,18 @@ def create_post():
 @app.route("/post/<int:post_id>")
 def post(post_id):
     post = Post.query.get_or_404(post_id)
-    return render_template("post.html", title=post.title,post=post)
+    img_file = url_for('static', filename='images/' + post.image_file)
+    return render_template("post.html", title=post.title,post=post,img_file=img_file)
+
+def save_blogpicture(form_pic):
+    random_hex = secrets.token_hex(8)
+    _f_name,f_ext = os.path.splitext(form_pic.filename)
+    picture_fn = random_hex + f_ext
+    picture_path = os.path.join(app.root_path, 'static/images', picture_fn)
+
+    form_pic.save(picture_path)
+    return picture_fn
+
 
 @app.route("/post/<int:post_id>/update", methods=["POST","GET"])
 @login_required
@@ -119,6 +130,10 @@ def update_post(post_id):
     form = PostForm()
 
     if form.validate_on_submit():
+        print(form.content.data)
+        if form.picture.data:
+            picture_file = save_blogpicture(form.picture.data)
+            post.image_file = picture_file
         post.title = form.title.data
         post.content = form.content.data
         db.session.commit()

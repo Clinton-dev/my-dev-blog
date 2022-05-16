@@ -31,8 +31,6 @@ class LoginForm(FlaskForm):
 class UpdateProfileForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired(),Length(min=2, max=20)])
     email = StringField('Email', validators=[DataRequired(),Email()])
-    # password = PasswordField('Password', validators=[DataRequired()])
-    # confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
     picture = FileField('update profile picture',validators=[FileAllowed(['jpg','png'])])
     submit = SubmitField('Update profile')
 
@@ -50,6 +48,6 @@ class UpdateProfileForm(FlaskForm):
 
 class PostForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])
-    picture = FileField('add blog picture',validators=[FileAllowed(['jpg','png'])])
+    picture = FileField('update profile picture',validators=[FileAllowed(['jpg','png'])])
     content = TextAreaField('Content', validators=[DataRequired()])
     submit = SubmitField('Post')

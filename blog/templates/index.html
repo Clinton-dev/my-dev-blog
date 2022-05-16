@@ -19,7 +19,7 @@
                     </div>
                     <div class="card-body">
                       <h5 class="card-title "><a href="{{url_for('post',post_id=blog.id)}}" class="blog-title">{{blog.title}}</a></h5>
-                      <p class="card-text">{{blog.content}}</p>
+                      <p class="card-text">{{blog.content | truncate(50)}}</p>
                       <a href="{{url_for('post',post_id=blog.id)}}" class="btn blog-btn">Read blog</a>
                     </div>
                 </div>
