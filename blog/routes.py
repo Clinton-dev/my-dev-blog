@@ -3,7 +3,7 @@ import secrets
 from PIL import Image
 from flask import redirect, render_template,url_for, flash, request
 from blog import app, db, bcrypt
-from blog.forms import RegistrationForm, LoginForm, UpdateProfileForm
+from blog.forms import RegistrationForm, LoginForm, UpdateProfileForm, PostForm
 from blog.models import User, Post, Comment
 from flask_login import login_required, login_user, current_user, logout_user
 
@@ -113,3 +113,8 @@ def profile():
         form.email.data = current_user.email
     img_file = url_for('static', filename='profile-pic/' + current_user.image_file)
     return render_template('profile.html', title="profile", user_img=img_file, form=form)
+
+@app.route("/create_post")
+@login_required
+def create_post():
+    return render_template("create_post.html", title="new blog post")
