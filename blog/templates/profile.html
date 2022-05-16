@@ -1,4 +1,18 @@
 {% extends "layout.html"%}
 {% block content%}
-    <h2>{{current_user.username}}</h2>
+    <div class="container">
+        <div class="content-section mt-4">
+            <div class="media">
+                <div class="row justify-content-start">
+                    <div class="col-3">
+                        <img class="rounded-circle account-img" src="{{user_img}}">
+                    </div>
+                    <div class="media-body col-7">
+                      <h2 class="account-heading">{{current_user.username}}</h2>
+                      <p class="text-secondary">{{current_user.email}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock%}
