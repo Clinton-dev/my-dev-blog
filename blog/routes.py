@@ -6,7 +6,7 @@ import secrets
 from PIL import Image
 from flask import abort, redirect, render_template,url_for, flash, request
 from blog import app, db, bcrypt
-from blog.forms import RegistrationForm, LoginForm, UpdateProfileForm, PostForm
+from blog.forms import RegistrationForm, LoginForm, UpdateProfileForm, PostForm, CommentForm
 from blog.models import User, Post, Comment, Quote
 from flask_login import login_required, login_user, current_user, logout_user
 
@@ -108,8 +108,9 @@ def create_post():
 @app.route("/post/<int:post_id>")
 def post(post_id):
     post = Post.query.get_or_404(post_id)
+    comments = Comment.query.filter_by(post_id=post.id)
     img_file = url_for('static', filename='images/' + post.image_file)
-    return render_template("post.html", title=post.title,post=post,img_file=img_file)
+    return render_template("post.html", title=post.title,post=post,img_file=img_file, comments=comments)
 
 def save_blogpicture(form_pic):
     random_hex = secrets.token_hex(8)
@@ -154,3 +155,17 @@ def delete_post(post_id):
     db.session.commit()
     flash('Blog post deleted successfully!','success')
     return redirect(url_for('home'))
+
+@app.route("/post/<int:post_id>/comment/new", methods=["POST","GET"])
+@login_required
+def create_comment(post_id):
+    post = Post.query.get_or_404(post_id)
+    form = CommentForm()
+    if form.validate_on_submit():
+        comment = Comment(content=form.content.data,user_id=current_user.id, post_id=post.id)
+        db.session.add(comment)
+        db.session.commit()
+        flash('Comment posted successfully!', 'success')
+        return redirect(url_for('post',post_id=post.id))
+    return render_template("create_comment.html", title="post a comment", form=form, legend="Post a comment")
+

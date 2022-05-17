@@ -129,8 +129,8 @@ a.author-link {
     height: 80vh;
 }
 
-/* footer {
+footer {
     background-color: #774936;
     color: #fff;
-    height: 5vh;
-} */
+    /* height: 5vh; */
+}
