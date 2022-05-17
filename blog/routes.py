@@ -1,4 +1,3 @@
-from multiprocessing import reduction
 import os
 import json
 import requests
@@ -168,4 +167,15 @@ def create_comment(post_id):
         flash('Comment posted successfully!', 'success')
         return redirect(url_for('post',post_id=post.id))
     return render_template("create_comment.html", title="post a comment", form=form, legend="Post a comment")
+
+@app.route("/comment/<int:comment_id>/delete", methods=["POST",'GET'])
+@login_required
+def delete_comment(comment_id):
+    comment = Comment.query.get_or_404(comment_id)
+    if comment.post.author != current_user:
+            abort(403)
+    db.session.delete(comment)
+    db.session.commit()
+    flash('Comment deleted successfully!','success')
+    return redirect(url_for('post', post_id=comment.post.id))
 

@@ -129,6 +129,10 @@ a.author-link {
     height: 80vh;
 }
 
+a.comments-btn {
+    margin-bottom: 1.5rem;
+}
+
 footer {
     background-color: #774936;
     color: #fff;
